@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "tBxWxvtq5nJ3d3lytW5kUFLzYEY4dWwlfWoBa/YkiAEhBo183t3Vd/GHoNNEPgTpDiCk/wkv6XeblduBeol89Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Albert\\source\\repos\\SSokoban\\SSokoban\\SSokoban.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Albert\\.nuget\\packages\\csfml\\2.5.0\\csfml.2.5.0.nupkg.sha512",
+    "C:\\Users\\Albert\\.nuget\\packages\\sfml.audio\\2.5.0\\sfml.audio.2.5.0.nupkg.sha512",
+    "C:\\Users\\Albert\\.nuget\\packages\\sfml.graphics\\2.5.0\\sfml.graphics.2.5.0.nupkg.sha512",
+    "C:\\Users\\Albert\\.nuget\\packages\\sfml.net\\2.5.0\\sfml.net.2.5.0.nupkg.sha512",
+    "C:\\Users\\Albert\\.nuget\\packages\\sfml.system\\2.5.0\\sfml.system.2.5.0.nupkg.sha512",
+    "C:\\Users\\Albert\\.nuget\\packages\\sfml.window\\2.5.0\\sfml.window.2.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}
