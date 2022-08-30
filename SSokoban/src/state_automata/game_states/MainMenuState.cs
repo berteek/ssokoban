@@ -227,7 +227,7 @@ namespace SSokoban.GameStates
         {
             UI.HandleInput();
 
-            if (Input.GetKeyPressed(Keyboard.Key.Num1))
+            if (Input.GetKeyPressed(Keyboard.Key.L))
             {
                 Commander.Process("load init 1");
             }

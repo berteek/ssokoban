@@ -62,7 +62,7 @@ namespace SSokoban.Interface
                 {
                     textPiece.Text.DisplayedString += ".";
                 }
-                else if (Input.GetKeyPressed(Keyboard.Key.Semicolon) && Input.GetKeyPressed(Keyboard.Key.LShift))
+                else if (Input.GetKeyPressed(Keyboard.Key.Semicolon) && Input.GetKeyDown(Keyboard.Key.LShift))
                 {
                     textPiece.Text.DisplayedString += ":";
                 }

@@ -28,5 +28,10 @@ namespace SSokoban.Core
                     return true;
             return false;
         }
+
+        public static bool GetKeyDown(Keyboard.Key key)
+        {
+            return Keyboard.IsKeyPressed(key);
+        }
     }
 }
