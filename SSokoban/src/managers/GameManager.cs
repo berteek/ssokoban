@@ -47,7 +47,34 @@ namespace SSokoban.Core
 
         public static void RequestLoadNextMap()
         {
-            Network.Send("loadnextmap");
+            Network.Send("requestloadnextmap");
+        }
+
+        public static void CheckForNextMapLoad()
+        {
+            PlayingState playingState = GameState as PlayingState;
+
+            if (playingState == null)
+                return;
+
+            Entity escape = playingState.Section.Entities.FirstOrDefault<Entity>((entity) => entity.GetComponent<EscapeComponent>() != null);
+            if (escape == null)
+                return;
+
+            if (escape.GetComponent<EscapeComponent>().PlayerOnEscape)
+            {
+                Network.Send("loadnextmap");
+
+                if (playingState.Section.NextSection == null)
+                {
+                    GameState = new WinState();
+                }
+                else
+                {
+                    CurrentLevel = playingState.Section.NextSection.LevelNumber;
+                    GameState = new PlayingState(playingState.Section.NextSection);
+                }
+            }
         }
 
         public static void LoadNextMap()
@@ -60,18 +87,11 @@ namespace SSokoban.Core
             if (playingState.Section.NextSection == null)
             {
                 GameState = new WinState();
-                return;
             }
-
-            Entity escape = playingState.Section.Entities.FirstOrDefault<Entity>((entity) => entity.GetComponent<EscapeComponent>() != null);
-            if (escape == null)
-                return;
-
-            if (escape.GetComponent<EscapeComponent>().PlayerOnEscape)
+            else
             {
                 CurrentLevel = playingState.Section.NextSection.LevelNumber;
                 GameState = new PlayingState(playingState.Section.NextSection);
-                Network.Send("loadnextmap");
             }
         }
 

@@ -69,7 +69,6 @@ namespace SSokoban.Utils
                 if (PlayerController.Player == entity)
                 {
                     escapeComponent.PlayerOnEscape = true;
-                    GameManager.LoadNextMap();
                     GameManager.RequestLoadNextMap();
                 }
             };

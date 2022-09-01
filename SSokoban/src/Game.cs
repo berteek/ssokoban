@@ -71,6 +71,9 @@ namespace SSokoban.Core
                 GameManager.dt = clock.Restart().AsSeconds();
                 window.SetTitle($"{windowTitle} [FPS: {Math.Round(1 / GameManager.dt, 2)}]");
 
+                Network.Tasks?.Invoke();
+                Network.Tasks = () => {};
+                
                 Input.Keys.Clear();
                 window.DispatchEvents();
 

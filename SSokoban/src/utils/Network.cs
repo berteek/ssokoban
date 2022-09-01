@@ -17,6 +17,8 @@ namespace SSokoban.Utils
         private static UdpClient sender;
         private static UdpClient receiver;
 
+        public static Action Tasks { get; set; }
+
         private static Thread connectionThread;
         private static Thread receiveThread;
         private static bool isReceiving = true;
@@ -39,7 +41,7 @@ namespace SSokoban.Utils
             GetLocalIPs().ForEach((ip) =>
             {
                 if (remoteAddress.Equals(ip) && remotePort == LocalPort)
-                    isConnectingToItself = true;        
+                    isConnectingToItself = true;
             });
             if (isConnectingToItself)
                 return;

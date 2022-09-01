@@ -39,7 +39,8 @@ namespace SSokoban.Utils
                     }
                     if (section == null)
                         return;
-                    GameManager.GameState = new PlayingState(section);
+
+                    Network.Tasks += () => { GameManager.GameState = new PlayingState(section); };
                     break;
                 case "imready":
                     if ((GameManager.GameState as MainMenuState).IsReady)
@@ -53,7 +54,7 @@ namespace SSokoban.Utils
                     if (mainMenuState != null)
                         mainMenuState.EnableReady?.Invoke(false);
                     else
-                        GameManager.GameState = new MainMenuState();
+                        Network.Tasks += () => { GameManager.GameState = new MainMenuState(); };
                     Network.Close();
                     break;
                 /*case "activate":
@@ -62,8 +63,11 @@ namespace SSokoban.Utils
                 case "deactivate":
                     ActivatePressurePlateInteractables(false, commands[1]);
                     break;*/
+                case "requestloadnextmap":
+                    Network.Tasks += () => { GameManager.CheckForNextMapLoad(); };
+                    break;
                 case "loadnextmap":
-                    GameManager.LoadNextMap();
+                    Network.Tasks += () => { GameManager.LoadNextMap(); };
                     break;
                 case "rewind":
                     MoveHistory.RewindNet();
@@ -72,7 +76,7 @@ namespace SSokoban.Utils
                     MoveHistory.CreateEmptyRecord();
                     break;
                 case "restart":
-                    GameManager.Restart();
+                    Network.Tasks += () => { GameManager.Restart(); };
                     break;
             }
         }

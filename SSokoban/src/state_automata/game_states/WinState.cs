@@ -20,15 +20,22 @@ namespace SSokoban.GameStates
 
         protected override void HandleInput()
         {
-            if (Keyboard.IsKeyPressed(Keyboard.Key.Space))
+            if (Input.GetKeyPressed(Keyboard.Key.Space))
             {
                 GameManager.GameState = new MainMenuState();
             }
 
-            if (Keyboard.IsKeyPressed(Keyboard.Key.Escape))
+            if (Input.GetKeyPressed(Keyboard.Key.Escape))
             {
                 GameManager.Game.Close();
             }
+        }
+
+        public override void Update()
+        {
+            base.Update();
+
+            HandleInput();
         }
 
         public override void Draw(RenderTarget target)
