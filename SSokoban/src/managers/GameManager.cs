@@ -1,5 +1,3 @@
-using System.Linq;
-using SSokoban.EntitiesAndComponents;
 using SSokoban.GameStates;
 using SSokoban.MapsAndSections;
 using SSokoban.Utils;
@@ -12,6 +10,8 @@ namespace SSokoban.Core
 
         public static int CurrentLevel { get; set; } = 1;
         public static int CurrentSection { get; set; }
+
+        public static int RocksOnMarkCount { get; set; } = 0;
 
         public static float dt;
 
@@ -29,12 +29,11 @@ namespace SSokoban.Core
 
                 if (playingState != null)
                 {
-                    gameState = new MapTitleState(playingState.Section.MapName,
+                    gameState = new MapTitleState(playingState.Map.Name,
                         () =>
                         {
                             gameState = value;
                             OnGameStateChanged?.Invoke();
-                            Network.Send("update");
                         });
                 }
                 else
@@ -45,38 +44,6 @@ namespace SSokoban.Core
             }
         }
 
-        public static void RequestLoadNextMap()
-        {
-            Network.Send("requestloadnextmap");
-        }
-
-        public static void CheckForNextMapLoad()
-        {
-            PlayingState playingState = GameState as PlayingState;
-
-            if (playingState == null)
-                return;
-
-            Entity escape = playingState.Section.Entities.FirstOrDefault<Entity>((entity) => entity.GetComponent<EscapeComponent>() != null);
-            if (escape == null)
-                return;
-
-            if (escape.GetComponent<EscapeComponent>().PlayerOnEscape)
-            {
-                Network.Send("loadnextmap");
-
-                if (playingState.Section.NextSection == null)
-                {
-                    GameState = new WinState();
-                }
-                else
-                {
-                    CurrentLevel = playingState.Section.NextSection.LevelNumber;
-                    GameState = new PlayingState(playingState.Section.NextSection);
-                }
-            }
-        }
-
         public static void LoadNextMap()
         {
             PlayingState playingState = GameState as PlayingState;
@@ -84,28 +51,38 @@ namespace SSokoban.Core
             if (playingState == null)
                 return;
 
-            if (playingState.Section.NextSection == null)
+            if (playingState.Map.NextMap == null)
             {
                 GameState = new WinState();
+                Network.Send("youlost");
             }
             else
             {
-                CurrentLevel = playingState.Section.NextSection.LevelNumber;
-                GameState = new PlayingState(playingState.Section.NextSection);
+                CurrentLevel = playingState.Map.NextMap.LevelNumber;
+                GameState = new PlayingState(playingState.Map.NextMap);
             }
         }
 
         public static void LoadMap(Map map)
         {
-            GameState = new PlayingState(map.Section1);
+            GameState = new PlayingState(map);
             CurrentLevel = map.LevelNumber;
         }
 
         public static void Restart()
         {
             Map map = Maps.MapByNumber(CurrentLevel);
-            Section section = CurrentSection == 1 ? map.Section1 : map.Section2;
-            GameState = new PlayingState(section);
+            GameState = new PlayingState(map);
+        }
+
+        public static void CheckIfAllRocksAreInPlaces()
+        {
+            PlayingState playingState = GameState as PlayingState;
+            if (playingState == null)
+                return;
+
+            if (RocksOnMarkCount == playingState.Map.RocksNumber)
+                LoadNextMap();
         }
     }
 }

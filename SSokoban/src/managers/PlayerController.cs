@@ -1,7 +1,7 @@
 using SFML.System;
+using SFML.Window;
 
 using SSokoban.EntitiesAndComponents;
-using SSokoban.EntityStates;
 
 namespace SSokoban.Core
 {
@@ -9,7 +9,25 @@ namespace SSokoban.Core
     {
         public static Entity Player { get; set; }
 
-        public static PlayerState PlayerState { get; set; } = new IdleState();
+        public static void HandleInput()
+        {
+            if (Input.GetKeyPressed(Keyboard.Key.W))
+            {
+                PlayerController.Move(new Vector2i(0, -1));
+            }
+            else if (Input.GetKeyPressed(Keyboard.Key.S))
+            {
+                PlayerController.Move(new Vector2i(0, 1));
+            }
+            else if (Input.GetKeyPressed(Keyboard.Key.A))
+            {
+                PlayerController.Move(new Vector2i(-1, 0));
+            }
+            else if (Input.GetKeyPressed(Keyboard.Key.D))
+            {
+                PlayerController.Move(new Vector2i(1, 0));
+            }
+        }
 
         public static void Move(Vector2i direction)
         {
@@ -17,7 +35,7 @@ namespace SSokoban.Core
 
             if (moveComponent == null)
                 return;
-            
+
             moveComponent.Move(direction);
         }
     }

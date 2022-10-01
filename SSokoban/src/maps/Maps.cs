@@ -9,84 +9,102 @@ namespace SSokoban.MapsAndSections
 {
     public static class Maps
     {
-        public static Map INIT
+        public static Map L1
         {
             get
             {
-                Section section1 = new Section(new List<Entity>
+                Map map = new Map("Level 1", 1, new List<Entity>
                 {
                     Prefabs.WizardBoy(new Vector2i(3, 3)),
 
-                    Prefabs.Rock(new Vector2i(6, 3)),
-
-                    /*
-                    Prefabs.PressurePlate(new Vector2i(6, 2), PressurePlateType.Purple),
-                    Prefabs.PressurePlate(new Vector2i(6, 3), PressurePlateType.Green),
-
-                    Prefabs.PressurePlateInteractable(new Vector2i(5, 2), PressurePlateType.Purple),
-                    Prefabs.PressurePlateInteractable(new Vector2i(5, 3), PressurePlateType.Purple),
-                    Prefabs.PressurePlateInteractable(new Vector2i(5, 4), PressurePlateType.Purple),
-
-                    Prefabs.PressurePlateInteractable(new Vector2i(7, 2), PressurePlateType.Green),
-                    Prefabs.PressurePlateInteractable(new Vector2i(7, 3), PressurePlateType.Green),
-                    Prefabs.PressurePlateInteractable(new Vector2i(7, 4), PressurePlateType.Green),
-
-                    Prefabs.PressurePlate(new Vector2i(8, 2), PressurePlateType.Green),
-                    Prefabs.PressurePlate(new Vector2i(8, 3), PressurePlateType.Green),
-                    Prefabs.PressurePlate(new Vector2i(8, 4), PressurePlateType.Green),
-
-                    Prefabs.PressurePlateInteractable(new Vector2i(9, 2), PressurePlateType.Purple),
-                    Prefabs.PressurePlateInteractable(new Vector2i(9, 3), PressurePlateType.Purple),
-                    Prefabs.PressurePlateInteractable(new Vector2i(9, 4), PressurePlateType.Purple),
-                    */
-
-                    Prefabs.Escape(new Vector2i(11, 3))
-                }, 0, 15);
-
-                section1.Entities.AddRange(CreateWalls(from: new Vector2i(1, 1), to: new Vector2i(13, 1)));
-                section1.Entities.AddRange(CreateWalls(from: new Vector2i(13, 2), to: new Vector2i(13, 5)));
-                section1.Entities.AddRange(CreateWalls(from: new Vector2i(1, 5), to: new Vector2i(12, 5)));
-                section1.Entities.AddRange(CreateWalls(from: new Vector2i(1, 2), to: new Vector2i(1, 4)));
-
-                section1.Entities.AddRange(CreateFloor(from: new Vector2i(2, 2), to: new Vector2i(12, 4)));
-
-                Section section2 = new Section(new List<Entity>
-                {
-                    Prefabs.Knight(new Vector2i(3, 3)),
-
-                    /*Prefabs.PressurePlate(new Vector2i(2, 4), PressurePlateType.Green),
-
-                    Prefabs.PressurePlate(new Vector2i(5, 4), PressurePlateType.Purple),
-                    Prefabs.PressurePlate(new Vector2i(6, 4), PressurePlateType.Purple),
-                    */
+                    Prefabs.Rock(new Vector2i(4, 3)),
                     Prefabs.Rock(new Vector2i(5, 4)),
-                    Prefabs.Rock(new Vector2i(6, 4)),
+                    Prefabs.Rock(new Vector2i(5, 5)),
+                    Prefabs.Rock(new Vector2i(2, 7)),
+                    Prefabs.Rock(new Vector2i(4, 7)),
+                    Prefabs.Rock(new Vector2i(5, 7)),
+                    Prefabs.Rock(new Vector2i(6, 7)),
 
-                    Prefabs.Wall(new Vector2i(8, 2)),
-                    Prefabs.Wall(new Vector2i(8, 4)),
+                    Prefabs.Mark(new Vector2i(2, 3)),
+                    Prefabs.Mark(new Vector2i(6, 4)),
+                    Prefabs.Mark(new Vector2i(2, 5)),
+                    Prefabs.Mark(new Vector2i(5, 6)),
+                    Prefabs.Mark(new Vector2i(4, 7)),
+                    Prefabs.Mark(new Vector2i(7, 7)),
+                    Prefabs.Mark(new Vector2i(5, 8))
+                }, 0, 7, 20);
 
-                    /*
-                    Prefabs.PressurePlateInteractable(new Vector2i(8, 3), PressurePlateType.Green),
+                map.Entities.AddRange(CreateWalls(from: new Vector2i(3, 1), to: new Vector2i(7, 1)));
+                map.Entities.AddRange(CreateWalls(from: new Vector2i(7, 2), to: new Vector2i(7, 6)));
+                map.Entities.AddRange(CreateWalls(from: new Vector2i(8, 6), to: new Vector2i(8, 9)));
+                map.Entities.AddRange(CreateWalls(from: new Vector2i(1, 2), to: new Vector2i(3, 2)));
+                map.Entities.AddRange(CreateWalls(from: new Vector2i(1, 2), to: new Vector2i(1, 9)));
+                map.Entities.AddRange(CreateWalls(from: new Vector2i(2, 9), to: new Vector2i(7, 9)));
+                map.Entities.AddRange(CreateWalls(from: new Vector2i(2, 4), to: new Vector2i(3, 4)));
+                map.Entities.AddRange(CreateWalls(from: new Vector2i(3, 5), to: new Vector2i(3, 6)));
+                map.Entities.Add(Prefabs.Wall(new Vector2i(4, 5)));
 
-                    Prefabs.PressurePlateInteractable(new Vector2i(9, 2), PressurePlateType.Purple),
-                    Prefabs.PressurePlateInteractable(new Vector2i(9, 3), PressurePlateType.Purple),
-                    Prefabs.PressurePlateInteractable(new Vector2i(9, 4), PressurePlateType.Purple),
-                    */
+                map.Entities.AddRange(CreateFloor(from: new Vector2i(2, 2), to: new Vector2i(7, 9)));
 
-                    Prefabs.Escape(new Vector2i(11, 3))
-                }, 0, 15);
+                map.Sort();
 
-                section2.Entities.AddRange(CreateWalls(from: new Vector2i(1, 1), to: new Vector2i(13, 1)));
-                section2.Entities.AddRange(CreateWalls(from: new Vector2i(13, 2), to: new Vector2i(13, 5)));
-                section2.Entities.AddRange(CreateWalls(from: new Vector2i(1, 5), to: new Vector2i(12, 5)));
-                section2.Entities.AddRange(CreateWalls(from: new Vector2i(1, 2), to: new Vector2i(1, 4)));
+                map.NextMap = L2;
 
-                section2.Entities.AddRange(CreateFloor(from: new Vector2i(2, 2), to: new Vector2i(12, 4)));
+                return map;
+            }
+        }
 
-                section1.Sort();
-                section2.Sort();
+        public static Map L2
+        {
+            get
+            {
+                Map map = new Map("Level 2", 2, new List<Entity>
+                {
+                    Prefabs.WizardBoy(new Vector2i(13, 9)),
 
-                return new Map("LEVEL 1", 1, section1, section2);
+                    Prefabs.Rock(new Vector2i(6, 3)),
+                    Prefabs.Rock(new Vector2i(8, 4)),
+                    Prefabs.Rock(new Vector2i(6, 5)),
+                    Prefabs.Rock(new Vector2i(9, 5)),
+                    Prefabs.Rock(new Vector2i(3, 8)),
+                    Prefabs.Rock(new Vector2i(6, 8)),
+
+                    Prefabs.Mark(new Vector2i(20, 7)),
+                    Prefabs.Mark(new Vector2i(21, 7)),
+                    Prefabs.Mark(new Vector2i(20, 8)),
+                    Prefabs.Mark(new Vector2i(21, 8)),
+                    Prefabs.Mark(new Vector2i(20, 9)),
+                    Prefabs.Mark(new Vector2i(21, 9))
+                }, 0, 6, 23);
+
+                map.Entities.AddRange(CreateWalls(from: new Vector2i(5, 1), to: new Vector2i(9, 1)));
+                map.Entities.AddRange(CreateWalls(from: new Vector2i(5, 2), to: new Vector2i(5, 4)));
+                map.Entities.AddRange(CreateWalls(from: new Vector2i(9, 2), to: new Vector2i(9, 4)));
+                map.Entities.AddRange(CreateWalls(from: new Vector2i(3, 5), to: new Vector2i(3, 6)));
+                map.Entities.AddRange(CreateWalls(from: new Vector2i(3, 4), to: new Vector2i(4, 4)));
+                map.Entities.AddRange(CreateWalls(from: new Vector2i(1, 6), to: new Vector2i(2, 6)));
+                map.Entities.AddRange(CreateWalls(from: new Vector2i(1, 7), to: new Vector2i(1, 9)));
+                map.Entities.AddRange(CreateWalls(from: new Vector2i(2, 9), to: new Vector2i(5, 9)));
+                map.Entities.AddRange(CreateWalls(from: new Vector2i(5, 10), to: new Vector2i(5, 11)));
+                map.Entities.AddRange(CreateWalls(from: new Vector2i(6, 11), to: new Vector2i(11, 11)));
+                map.Entities.AddRange(CreateWalls(from: new Vector2i(12, 9), to: new Vector2i(12, 11)));
+                map.Entities.AddRange(CreateWalls(from: new Vector2i(13, 10), to: new Vector2i(14, 10)));
+                map.Entities.AddRange(CreateWalls(from: new Vector2i(14, 9), to: new Vector2i(17, 9)));
+                map.Entities.AddRange(CreateWalls(from: new Vector2i(17, 10), to: new Vector2i(22, 10)));
+                map.Entities.AddRange(CreateWalls(from: new Vector2i(22, 6), to: new Vector2i(22, 9)));
+                map.Entities.AddRange(CreateWalls(from: new Vector2i(17, 6), to: new Vector2i(21, 6)));
+                map.Entities.AddRange(CreateWalls(from: new Vector2i(11, 7), to: new Vector2i(17, 7)));
+                map.Entities.AddRange(CreateWalls(from: new Vector2i(11, 4), to: new Vector2i(11, 6)));
+                map.Entities.AddRange(CreateWalls(from: new Vector2i(9, 4), to: new Vector2i(10, 4)));
+                map.Entities.AddRange(CreateWalls(from: new Vector2i(5, 6), to: new Vector2i(5, 7)));
+                map.Entities.AddRange(CreateWalls(from: new Vector2i(7, 6), to: new Vector2i(9, 7)));
+                map.Entities.AddRange(CreateWalls(from: new Vector2i(7, 9), to: new Vector2i(10, 9)));
+
+                //map.Entities.AddRange(CreateFloor(from: new Vector2i(2, 2), to: new Vector2i(7, 9)));
+
+                map.Sort();
+
+                return map;
             }
         }
 
@@ -117,7 +135,7 @@ namespace SSokoban.MapsAndSections
             switch (number)
             {
                 case 1:
-                    return INIT;
+                    return L1;
             }
 
             return null;

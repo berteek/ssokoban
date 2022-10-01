@@ -1,5 +1,3 @@
-using System;
-
 using SFML.System;
 
 using SSokoban.Core;

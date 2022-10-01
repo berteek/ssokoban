@@ -46,16 +46,7 @@ namespace SSokoban.Core
         {
             GameManager.Game = this;
 
-            SetupTitle();
-
             GameManager.GameState = new MainMenuState();
-        }
-
-        private void SetupTitle()
-        {
-            TextPiece mapTitle = new TextPiece("", 100);
-            mapTitle.Text.FillColor = new Color(230, 230, 230);
-            mapTitle.AddTrait(new CenterTextTrait());
         }
 
         private void SetupInputSystem()
@@ -72,8 +63,8 @@ namespace SSokoban.Core
                 window.SetTitle($"{windowTitle} [FPS: {Math.Round(1 / GameManager.dt, 2)}]");
 
                 Network.Tasks?.Invoke();
-                Network.Tasks = () => {};
-                
+                Network.Tasks = () => { };
+
                 Input.Keys.Clear();
                 window.DispatchEvents();
 

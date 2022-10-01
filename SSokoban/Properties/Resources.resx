@@ -154,29 +154,32 @@
   <data name="knight" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\knight.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="mark_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mark.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="mark_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pressure_plate_interactable_green.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="mark_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pressure_plate_interactable_purple.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="Pixel_NES" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Pixel_NES.otf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="pressure_plate_green" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pressure_plate_green.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="pressure_plate_interactable_active_green" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pressure_plate_interactable_active_green.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="pressure_plate_interactable_active_purple" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pressure_plate_interactable_active_purple.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="pressure_plate_interactable_not_active_green" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pressure_plate_interactable_green.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="pressure_plate_interactable_not_active_purple" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pressure_plate_interactable_purple.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="pressure_plate_purple" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pressure_plate_purple.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="rock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+  <data name="rock_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\rock.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="rock_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pressure_plate_interactable_active_green.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="rock_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pressure_plate_interactable_active_purple.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="wall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wall.png;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

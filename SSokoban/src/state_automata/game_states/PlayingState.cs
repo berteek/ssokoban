@@ -1,29 +1,36 @@
+using SFML.System;
 using SFML.Window;
 using SFML.Graphics;
 
 using SSokoban.EntitiesAndComponents;
 using SSokoban.Core;
 using SSokoban.MapsAndSections;
-using SSokoban.Utils;
-using SFML.System;
+using SSokoban.Interface;
 
 namespace SSokoban.GameStates
 {
     public class PlayingState : GameState
     {
-        public Section Section { get; set; }
+        public Map Map { get; set; }
 
-        public PlayingState(Section section)
+        private UI ui;
+
+        public PlayingState(Map map)
         {
-            Section = section;
-            PlayerController.Player = section.Player;
+            Map = map;
+            PlayerController.Player = map.Player;
             ScaleAndPositionSprites();
-            MovementTransactionSystem.Section = Section;
+            MovementTransactionSystem.Map = Map;
+
+            ui = new UI();
+            TextPiece textPiece = new TextPiece("Press 'SPACE' to RESTART", 20);
+            textPiece.AddTrait(new OffsetTrait(new Vector2f(10, 5)));
+            ui.AddPiece(textPiece);
         }
 
         private void ScaleAndPositionSprites()
         {
-            foreach (Entity entity in Section.Entities)
+            foreach (Entity entity in Map.Entities)
             {
                 SpriteComponent spriteComponent = entity.GetComponent<SpriteComponent>();
                 if (spriteComponent != null)
@@ -36,12 +43,11 @@ namespace SSokoban.GameStates
 
         protected override void HandleInput()
         {
-            PlayerController.PlayerState.HandleInput();
+            PlayerController.HandleInput();
 
-            if (Input.GetKeyPressed(Keyboard.Key.R) && Input.GetKeyPressed(Keyboard.Key.LShift))
+            if (Input.GetKeyPressed(Keyboard.Key.Space))
             {
                 GameManager.Restart();
-                Network.Send("restart");
             }
 
             if (Input.GetKeyPressed(Keyboard.Key.Escape))
@@ -55,20 +61,21 @@ namespace SSokoban.GameStates
             base.Update();
 
             MovementTransactionSystem.Process();
-            CollisionSystem.CheckCollisions(Section);
+            CollisionSystem.CheckCollisions(Map);
             HandleInput();
             UpdateEntities();
+            GameManager.CheckIfAllRocksAreInPlaces();
         }
 
         private void UpdateEntities()
         {
-            foreach (Entity entity in Section.Entities)
+            foreach (Entity entity in Map.Entities)
                 entity.UpdateComponents();
         }
 
         public override void Draw(RenderTarget target)
         {
-            foreach (Entity entity in Section.Entities)
+            foreach (Entity entity in Map.Entities)
             {
                 SpriteComponent spriteComponent = entity.GetComponent<SpriteComponent>();
 
@@ -77,6 +84,8 @@ namespace SSokoban.GameStates
 
                 target.Draw(spriteComponent);
             }
+
+            target.Draw(ui);
         }
     }
 }

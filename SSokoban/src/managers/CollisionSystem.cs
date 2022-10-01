@@ -21,14 +21,14 @@ namespace SSokoban.Core
         private static List<Collision> previousCollisions = new List<Collision>();
         private static List<Collision> currentCollisions = new List<Collision>();
 
-        public static void CheckCollisions(Section section)
+        public static void CheckCollisions(Map map)
         {
-            foreach (Entity entity1 in section.Entities)
+            foreach (Entity entity1 in map.Entities)
             {
                 ColliderComponent collider = entity1.GetComponent<ColliderComponent>();
                 if (collider != null)
                 {
-                    foreach (Entity entity2 in section.Entities)
+                    foreach (Entity entity2 in map.Entities)
                     {
                         if (entity1 != entity2 && collider.Position == entity2.Position && collider.ZIndex == entity2.ZIndex)
                         {

@@ -1,3 +1,8 @@
+using System.Collections.Generic;
+using SFML.Window;
+using SSokoban.Core;
+using SSokoban.EntitiesAndComponents;
+
 namespace SSokoban.MapsAndSections
 {
     public class Map
@@ -5,21 +10,31 @@ namespace SSokoban.MapsAndSections
         public string Name { get; private set; }
         public int LevelNumber { get; private set; }
 
-        public Section Section1 { get; private set; }
-        public Section Section2 { get; private set; }
+        public Map NextMap { get; set; }
 
-        public Map(string name, int levelNumber, Section section1, Section section2)
+        public Entity Player { get; set; }
+        public int RocksNumber { get; set; }
+
+        private List<Entity> entities;
+        public List<Entity> Entities
+        {
+            get { return entities; }
+            set { entities = value; entities.Sort((e1, e2) => e1.ZIndex.CompareTo(e2.ZIndex)); }
+        }
+
+        public Map(string name, int levelNumber, List<Entity> entities, int playerIndex, int rocksNumber, int widthInUnits)
         {
             Name = name;
             LevelNumber = levelNumber;
-            Section1 = section1;
-            Section2 = section2;
+            Player = entities[playerIndex];
+            RocksNumber = rocksNumber;
+            Entities = entities;
+            GameManager.UNIT = VideoMode.DesktopMode.Width / widthInUnits;
+        }
 
-            Section1.MapName = Name;
-            Section2.MapName = Name;
-
-            Section1.LevelNumber = LevelNumber;
-            Section2.LevelNumber = LevelNumber;
+        public void Sort()
+        {
+            entities.Sort((e1, e2) => e1.ZIndex.CompareTo(e2.ZIndex));
         }
     }
 }

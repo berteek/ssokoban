@@ -49,38 +49,34 @@ namespace SSokoban.Utils
             Entity rock = new Entity(position);
             rock.Name = "Rock";
             rock.AddComponent(new MoveComponent());
-            rock.AddComponent(new SpriteComponent(new Texture(Resources.rock)));
+            rock.AddComponent(new SpriteComponent(new Texture(Resources.rock_1)));
             return rock;
         }
 
-        public static Entity Escape(Vector2i position)
+        public static Entity Mark(Vector2i position)
         {
-            Entity escape = new Entity(position);
-
-            escape.Name = "Escape";
-            escape.ZIndex = 0;
-
-            escape.AddComponent(new SpriteComponent(new Texture(Resources.escape)));
-
-            EscapeComponent escapeComponent = new EscapeComponent();
+            Entity mark = new Entity(position);
+            mark.Name = "Mark";
+            mark.ZIndex = 0;
             ColliderComponent collider = new ColliderComponent(position, 1);
             collider.OnCollisionEntered += (entity) =>
             {
-                if (PlayerController.Player == entity)
+                if (entity.Name.Equals("Rock"))
                 {
-                    escapeComponent.PlayerOnEscape = true;
-                    GameManager.RequestLoadNextMap();
+                    GameManager.RocksOnMarkCount++;
                 }
             };
             collider.OnCollisionExited += (entity) =>
             {
-                if (PlayerController.Player == entity)
-                    escapeComponent.PlayerOnEscape = false;
+                if (entity.Name.Equals("Rock"))
+                {
+                    GameManager.RocksOnMarkCount--;
+                }
             };
-            escape.AddComponent(escapeComponent);
-            escape.AddComponent(collider);
+            mark.AddComponent(new SpriteComponent(new Texture(Resources.mark_1)));
+            mark.AddComponent(collider);
 
-            return escape;
+            return mark;
         }
 
         public static Entity Wall(Vector2i position)
@@ -99,38 +95,5 @@ namespace SSokoban.Utils
             floor.ZIndex = -1;
             return floor;
         }
-
-        /*
-        public static Entity PressurePlate(Vector2i position, PressurePlateType type)
-        {
-            Entity plate = new Entity(position);
-            plate.Name = "Pressure Plate";
-            Texture texture = null;
-            if (type == PressurePlateType.Green)
-                texture = new Texture(Resources.pressure_plate_green);
-            else if (type == PressurePlateType.Purple)
-                texture = new Texture(Resources.pressure_plate_purple);
-            SpriteComponent spriteComponent = new SpriteComponent(texture);
-            plate.AddComponent(spriteComponent);
-            plate.AddComponent(new PressurePlateComponent(type));
-            plate.ZIndex = 0;
-            return plate;
-        }
-
-        public static Entity PressurePlateInteractable(Vector2i position, PressurePlateType type)
-        {
-            Entity interactable = new Entity(position);
-            interactable.Name = "Pressure Plate Interactable";
-            Texture texture = null;
-            if (type == PressurePlateType.Green)
-                texture = new Texture(Resources.pressure_plate_interactable_not_active_green);
-            else if (type == PressurePlateType.Purple)
-                texture = new Texture(Resources.pressure_plate_interactable_not_active_purple);
-            SpriteComponent spriteComponent = new SpriteComponent(texture);
-            interactable.AddComponent(spriteComponent);
-            interactable.AddComponent(new PressurePlateInteractableComponent(type, spriteComponent));
-            interactable.ZIndex = 0;
-            return interactable;
-        }*/
     }
 }

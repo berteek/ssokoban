@@ -183,6 +183,36 @@ namespace SSokoban.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] mark_1 {
+            get {
+                object obj = ResourceManager.GetObject("mark_1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] mark_2 {
+            get {
+                object obj = ResourceManager.GetObject("mark_2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] mark_3 {
+            get {
+                object obj = ResourceManager.GetObject("mark_3", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Pixel_NES {
             get {
                 object obj = ResourceManager.GetObject("Pixel_NES", resourceCulture);
@@ -203,46 +233,6 @@ namespace SSokoban.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] pressure_plate_interactable_active_green {
-            get {
-                object obj = ResourceManager.GetObject("pressure_plate_interactable_active_green", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] pressure_plate_interactable_active_purple {
-            get {
-                object obj = ResourceManager.GetObject("pressure_plate_interactable_active_purple", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] pressure_plate_interactable_not_active_green {
-            get {
-                object obj = ResourceManager.GetObject("pressure_plate_interactable_not_active_green", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] pressure_plate_interactable_not_active_purple {
-            get {
-                object obj = ResourceManager.GetObject("pressure_plate_interactable_not_active_purple", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
         internal static byte[] pressure_plate_purple {
             get {
                 object obj = ResourceManager.GetObject("pressure_plate_purple", resourceCulture);
@@ -253,9 +243,29 @@ namespace SSokoban.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] rock {
+        internal static byte[] rock_1 {
             get {
-                object obj = ResourceManager.GetObject("rock", resourceCulture);
+                object obj = ResourceManager.GetObject("rock_1", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] rock_2 {
+            get {
+                object obj = ResourceManager.GetObject("rock_2", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] rock_3 {
+            get {
+                object obj = ResourceManager.GetObject("rock_3", resourceCulture);
                 return ((byte[])(obj));
             }
         }

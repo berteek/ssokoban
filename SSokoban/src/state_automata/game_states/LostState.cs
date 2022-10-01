@@ -7,14 +7,14 @@ using SSokoban.Utils;
 
 namespace SSokoban.GameStates
 {
-    public class WinState : GameState
+    public class LoseState : GameState
     {
         private UI ui;
 
-        public WinState()
+        public LoseState()
         {
             ui = new UI();
-            TextPiece textPiece = new TextPiece("YOU WIN!", 100);
+            TextPiece textPiece = new TextPiece("YOU LOSE!", 100);
             textPiece.AddTrait(new CenterTextTrait());
             ui.AddPiece(textPiece);
         }

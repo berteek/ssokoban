@@ -5,8 +5,6 @@ namespace SSokoban.EntitiesAndComponents
         public Entity entity;
 
         public virtual void Update()
-        {
-
-        }
+        {}
     }
 }

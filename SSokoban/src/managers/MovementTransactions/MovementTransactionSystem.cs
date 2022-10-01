@@ -11,7 +11,7 @@ namespace SSokoban.Core
     {
         public static List<MovementTransaction> Transactions { get; private set; } = new List<MovementTransaction>();
 
-        public static Section Section { get; set; }
+        public static Map Map { get; set; }
 
         public static void Process()
         {
@@ -32,7 +32,7 @@ namespace SSokoban.Core
 
         private static void PushNextEntities(Vector2i position, Vector2i translation, int ZIndex)
         {
-            Entity nextEntity = Section.Entities.FirstOrDefault<Entity>
+            Entity nextEntity = Map.Entities.FirstOrDefault<Entity>
             (
                 entity => entity.Position == position + translation
                         && entity.ZIndex == ZIndex
@@ -62,9 +62,9 @@ namespace SSokoban.Core
             }
         }
 
-        private static bool CheckIfEnoughSpaceToMove(Vector2i position, Vector2i translation, int ZIndex)
+        private static bool CheckIfEnoughSpaceToMove(Vector2i position, Vector2i translation, int ZIndex, int count = 0)
         {
-            Entity entityAtPosition = Section.Entities.FirstOrDefault<Entity>(entity => entity.Position == position && entity.ZIndex == ZIndex);
+            Entity entityAtPosition = Map.Entities.FirstOrDefault<Entity>(entity => entity.Position == position && entity.ZIndex == ZIndex);
 
             if (entityAtPosition == null)
                 return true;
@@ -74,7 +74,12 @@ namespace SSokoban.Core
             if (entityAtPositionMoveComponent == null)
                 return false;
 
-            return CheckIfEnoughSpaceToMove(position + translation, translation, ZIndex);
+            count++;
+
+            if (count == 3)
+                return false;
+
+            return CheckIfEnoughSpaceToMove(position + translation, translation, ZIndex, count);
         }
 
         public static void Submit(MovementTransaction transaction)

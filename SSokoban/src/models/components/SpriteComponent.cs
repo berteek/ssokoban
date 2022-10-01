@@ -17,8 +17,6 @@ namespace SSokoban.EntitiesAndComponents
 
         public Vector2f Scale { get { return sprite.Scale; } set { sprite.Scale = value; } }
         public Vector2f Position { get { return sprite.Position; } set { sprite.Position = value; } }
-        public Vector2f Origin { get { return sprite.Origin; } set { sprite.Origin = value; } }
-        public FloatRect GlobalBounds { get { return sprite.GetGlobalBounds(); } }
 
         public static int SPRITE_SIZE { get; set; } = 32;
 
